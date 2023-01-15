@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
-import { string, func } from 'prop-types';
+import { createUser } from '../services/userAPI';
 
 class Login extends Component {
+  state = {
+    user: '',
+    buttonDisable: true,
+  };
+
+  checkButton = (e) => {
+    const caracters = 3;
+    if (user.length >= caracters) {
+      this.setState((buttonDisable = false), (user = e.target.value));
+    } else {
+      this.setState((buttonDisable = true), (user = e.target.value));
+    }
+  };
+
   render() {
-    const { fetchApiCreateUser, value } = this.props;
+    const { user, buttonDisable } = this.state;
     return (
       <div data-testid="page-login">
         <input
@@ -12,24 +26,19 @@ class Login extends Component {
           id="search"
           data-testid="login-name-input"
           placeholder="Digite seu nome"
+          onChange={ this.checkButton }
         />
-        {value.length > 2 && (
-          <button
-            type="button"
-            data-testid="login-submit-button"
-            onClick={ fetchApiCreateUser }
-          >
-            Entrar
-          </button>
-        )}
+        <button
+          type="button"
+          data-testid="login-submit-button"
+          onClick={ () => createUser({ name: user }) }
+          disabled={ buttonDisable }
+        >
+          Entrar
+        </button>
       </div>
     );
   }
 }
-
-Login.propTypes = {
-  fetchApiCreateUser: func.isRequired,
-  value: string.isRequired,
-};
 
 export default Login;
