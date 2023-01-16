@@ -1,38 +1,46 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
+import Loading from './Loading';
 
 class Login extends Component {
   state = {
-    user: '',
-    buttonDisable: true,
+    name: '',
+    loading: false,
   };
 
-  checkButton = (e) => {
-    const caracters = 3;
-    if (user.length >= caracters) {
-      this.setState((buttonDisable = false), (user = e.target.value));
-    } else {
-      this.setState((buttonDisable = true), (user = e.target.value));
-    }
+  saveName = ({ target: { value } }) => {
+    this.setState({ name: value });
+  };
+
+  buttonClick = async () => {
+    const { history } = this.props;
+    const { name } = this.state;
+    this.setState({ loading: true });
+    await createUser({ name });
+    this.setState({ loading: false });
+    return history.push('/search');
   };
 
   render() {
-    const { user, buttonDisable } = this.state;
+    const { name, loading } = this.state;
+    const lengthButton = 3;
     return (
       <div data-testid="page-login">
+        { loading && <Loading /> }
         <input
           type="search"
           name="search"
           id="search"
           data-testid="login-name-input"
           placeholder="Digite seu nome"
-          onChange={ this.checkButton }
+          onChange={ this.saveName }
         />
         <button
           type="button"
           data-testid="login-submit-button"
-          onClick={ () => createUser({ name: user }) }
-          disabled={ buttonDisable }
+          onClick={ this.buttonClick }
+          disabled={ name.length < lengthButton }
         >
           Entrar
         </button>
@@ -40,5 +48,9 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  push: PropTypes.string,
+}.isRequired;
 
 export default Login;
