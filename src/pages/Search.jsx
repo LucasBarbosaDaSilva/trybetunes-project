@@ -57,9 +57,9 @@ class Search extends Component {
                 Pesquisar
               </button>
               <h3>
-                Reultado de álbuns de:
-                { ' ' }
-                { artistName }
+                {
+                  artistName && apiResult ? `Resultado de álbuns de: ${artistName}` : null
+                }
               </h3>
               { !apiResult && <h3>Nenhum álbum foi encontrado</h3> }
               {artistResult.map((e) => (
