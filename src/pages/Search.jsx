@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
 
-class Search extends Component {
+export default class Search extends Component {
   state = {
     artistName: '',
     artistResult: [],
@@ -86,5 +86,3 @@ class Search extends Component {
     );
   }
 }
-
-export default Search;

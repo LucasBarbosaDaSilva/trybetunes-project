@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Search from './pages/Search';
@@ -8,7 +8,7 @@ import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
 
-class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <Switch>
@@ -24,5 +24,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
