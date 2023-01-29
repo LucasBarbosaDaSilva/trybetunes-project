@@ -1,35 +1,59 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import Loading from '../pages/Loading';
+import Loading from '../pages/Loading';
+import { addSong } from '../services/favoriteSongsAPI';
 
 export default class MusicCard extends Component {
   state = {
-    // loading: true,
+    loading: false,
+    checkbox: false,
+  };
+
+  handleClick = async (event) => {
+    const { track } = this.props;
+    this.setState({ loading: true });
+    if (event.target.checked) {
+      await addSong(track);
+      this.setState({
+        loading: false,
+        checkbox: true,
+      });
+    } else {
+      this.setState({
+        loading: false,
+        checkbox: false,
+      });
+    }
   };
 
   render() {
-    // const { loading } = this.state;
-    const { trackName, previewUrl } = this.props;
+    const { loading, checkbox } = this.state;
+    const { trackName, previewUrl, trackId } = this.props;
 
     return (
       <div>
-        {/* { loading ? <Loading />
-          : ( */}
-        <div>
-          <h3>
-            {trackName}
-          </h3>
-          <audio data-testid="audio-component" src={ previewUrl } controls>
-            <track kind="captions" />
-            O seu navegador não suporta o elemento
-            {' '}
-            <code>
-              audio
-            </code>
-            .
-          </audio>
-        </div>
-        {/* ) } */}
+        { loading ? <Loading /> : (
+          <div>
+            <h3>{trackName}</h3>
+            <audio data-testid="audio-component" src={ previewUrl } controls>
+              <track kind="captions" />
+              O seu navegador não suporta o elemento
+              {' '}
+              <code>audio</code>
+              .
+            </audio>
+            <label htmlFor="check-input">
+              <input
+                name="check-input"
+                type="checkbox"
+                onClick={ this.handleClick }
+                checked={ checkbox }
+                data-testid={ `checkbox-music-${trackId}` }
+              />
+              Favorita
+            </label>
+          </div>
+        )}
       </div>
     );
   }
@@ -37,4 +61,5 @@ export default class MusicCard extends Component {
 MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
+  trackId: PropTypes.number.isRequired,
 };
