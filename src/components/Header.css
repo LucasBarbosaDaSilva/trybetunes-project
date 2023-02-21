@@ -1,0 +1,82 @@
+.header {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  /* justify-content:center; */
+  flex-direction: column;
+  width: 250px;
+height: 979px;
+background: #FFFFFF;
+justify-content: space-around;
+}
+
+.header-page {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: right ; */
+}
+
+.login-name {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  display: flex;
+  margin:auto;
+  margin-top: 50%;
+  justify-content: right;
+}
+
+.header-link {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  margin:8%;
+  justify-content: right;
+  /* justify-content: space-between; */
+  
+}
+
+.link {
+  border: none;
+  /* justify-content: space-between; */
+  color: green;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 50px;
+  font-size: 16px;
+  margin: 20px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.link:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.image-svg{
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+}
+
+.header-title {
+  font-family: 'Black Ops One', cursive;
+  font-size: 27px;
+  margin-left: 4%;
+}
+
+.header-logo {
+  display: flex;
+  width: 28%;
+  margin-top: 10%;
+}
+
+.header-logo-title {
+  display: flex;
+  flex-direction: row;
+}

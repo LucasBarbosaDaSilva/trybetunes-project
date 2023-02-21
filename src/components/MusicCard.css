@@ -1,0 +1,52 @@
+.music-card {
+  display: flex;
+  flex-direction: row;
+  
+  /* padding: 100px; */
+  /* width: 1000px; */
+}
+
+.track-name {
+  width: 182px;
+/* height: 28px; */
+margin-right: 70px;
+display: flex;
+font-family: 'Open Sans', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+/* line-height: 14px; */
+display: flex;
+align-items: center;
+
+/* color: #001813; */
+}
+
+.component-card{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 8%;
+}
+
+.audio {
+  width: 371.3px;
+height: 55.95px;
+
+
+background: #717171;
+border-radius: 42.3864px;
+}
+
+.favorite {
+ /* display: none; */
+margin-left: 50px;
+background: #EC5050;
+border: 2px solid #EC5050;
+}
+
+.input-component {
+  display: flex;
+  margin-left: 5%;
+  /* background-color: #2196F3; */
+}

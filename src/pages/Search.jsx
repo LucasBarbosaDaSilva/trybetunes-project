@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
+import './Search.css';
 
 export default class Search extends Component {
   state = {
@@ -35,51 +36,62 @@ export default class Search extends Component {
     const minimalCharacter = 2;
 
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="page-search">
         <Header />
         { loading ? <Loading />
           : (
             <div data-testid="page-login">
-              <input
-                type="search"
-                name="search-artist"
-                id="search-artist"
-                data-testid="search-artist-input"
-                placeholder="Digite o nome do artista"
-                onChange={ this.saveArtistName }
-              />
-              <button
-                type="button"
-                data-testid="search-artist-button"
-                disabled={ artistName.length < minimalCharacter }
-                onClick={ this.returnApiResult }
-              >
-                Pesquisar
-              </button>
-              <h3>
-                {
-                  artistName && apiResult ? `Resultado de álbuns de: ${artistName}` : null
-                }
-              </h3>
-              { !apiResult && <h3>Nenhum álbum foi encontrado</h3> }
-              {artistResult.map((e) => (
-                <Link
-                  to={ `/album/${e.collectionId}` }
-                  data-testid={ `link-to-album-${e.collectionId}` }
-                  key={ e.collectionId }
+              <img src="https://cdn-icons-png.flaticon.com/512/1544/1544829.png" alt="logo" className="logo-search" />
+              <div className="input-button">
+                <input
+                  className="input-artist"
+                  type="search"
+                  name="search-artist"
+                  id="search-artist"
+                  data-testid="search-artist-input"
+                  placeholder="Digite o nome do artista"
+                  onChange={ this.saveArtistName }
+                />
+
+                <button
+                  className="search-button"
+                  type="button"
+                  data-testid="search-artist-button"
+                  disabled={ artistName.length < minimalCharacter }
+                  onClick={ this.returnApiResult }
                 >
-                  <img src={ e.artworkUrl100 } alt="foto" />
-                  <h4>
-                    { e.collectionName }
-                  </h4>
-                  <p>
-                    { e.artistName }
-                  </p>
-                  <p>
-                    { e.collectionPrice }
-                  </p>
-                </Link>
-              ))}
+                  Pesquisar
+                </button>
+              </div>
+              <div className="result-search">
+                <h3 className="title-search">
+                  {
+                    artistName && apiResult
+                      ? `Resultado de álbuns de: ${artistName}` : null
+                  }
+                </h3>
+                <div className="result">
+                  { !apiResult
+                  && <h3 className="title-search">Nenhum álbum foi encontrado</h3>}
+                  {artistResult.map((e, index) => (
+                    <div key={ index } className="artist-result">
+                      <Link
+                        to={ `/album/${e.collectionId}` }
+                        data-testid={ `link-to-album-${e.collectionId}` }
+                        key={ e.collectionId }
+                      >
+                        <img src={ e.artworkUrl100 } alt="foto" className="image-album" />
+                        <h4>
+                          { e.collectionName }
+                        </h4>
+                        <p>
+                          { e.artistName }
+                        </p>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
       </div>

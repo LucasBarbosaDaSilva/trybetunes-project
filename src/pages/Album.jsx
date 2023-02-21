@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 import Loading from './Loading';
+import './Album.css';
 
 export default class Album extends Component {
   state = {
@@ -28,28 +29,32 @@ export default class Album extends Component {
     const { album, songs } = this.state;
 
     return (
-      <div data-testid="page-album">
+      <div data-testid="page-album" className="page-album">
         <Header />
         {album ? (
-          <div>
-            <img src={ album.artworkUrl100 } alt="Artista" />
+          <div className="album-page">
+            <img src="https://cdn-icons-png.flaticon.com/512/1544/1544829.png" alt="logo" className="logo-search" />
+            <img src={ album.artworkUrl100 } alt="Artista" className="image-album-page" />
+            <div className="album-artist-name">
+              <h2 data-testid="album-name">
+                {album.collectionName}
+              </h2>
+              <h3 data-testid="artist-name">
+                {album.artistName}
+              </h3>
+            </div>
+            <div className="music-album">
+              {songs.map((song) => (
 
-            <h2 data-testid="album-name">
-              {album.collectionName}
-            </h2>
-            <h3 data-testid="artist-name">
-              {album.artistName}
-            </h3>
-            {songs.map((song) => (
-              <MusicCard
-                trackName={ song.trackName }
-                previewUrl={ song.previewUrl }
-                key={ song.trackName }
-                trackId={ song.trackId }
-                track={ song }
-
-              />
-            ))}
+                <MusicCard
+                  trackName={ song.trackName }
+                  previewUrl={ song.previewUrl }
+                  key={ song.trackName }
+                  trackId={ song.trackId }
+                  track={ song }
+                />
+              ))}
+            </div>
           </div>
         ) : (
           <Loading />

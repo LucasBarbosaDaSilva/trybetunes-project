@@ -1,0 +1,138 @@
+.page-search {
+  display: flex;
+  width: 1030px;
+height: 720px;
+justify-content: center;
+margin: 0;
+
+}
+
+.input-button {
+  display: flex;
+  margin: auto;
+  margin-bottom: 5%;
+  justify-content: center;
+}
+
+.search-button {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 50px;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+
+.input-artist {
+  width: 40%;
+  padding: 12px 140px;
+  margin: 0px 70px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+} 
+
+
+
+
+.search-button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.result-search {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  margin-left: 3.49%;
+  align-items: center;
+  /* position: fixed; */
+  min-width: 1710px;
+min-height: 700px;
+/* flex-wrap: wrap; */
+
+background: #EFF3F9;
+}
+
+.result {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-items:baseline;
+margin-left: 14%;
+}
+
+.page-login {
+  display: flex;
+  /* flex-direction: column; */
+  margin-left: 3.49%;
+  align-items: center;
+  /* position: fixed; */
+  width: 1711px;
+/* height: 979px; */
+
+background: #EFF3F9;
+}
+
+.artist-result {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  border-radius: 50px;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-left: 15px;
+  max-width: 200px;
+  min-height: 380px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0px 0px 26px rgba(68, 73, 85, 0.2);
+border-radius: 10px;
+  
+}
+
+.image-album {
+  display: flex;
+  width: 200px;
+height: 200px;
+mix-blend-mode: normal;
+border-radius: 10px;
+justify-content: center;
+align-self: center;
+}
+
+.title-search {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  display: flex;
+}
+
+.logo-search {
+  display: flex;
+  width: 12%;
+  margin-left: 87%;
+  margin-top: -215px;
+  transform: translateY(115px);
+}

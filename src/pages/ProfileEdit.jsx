@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
 import Loading from './Loading';
+import './ProfileEdit.css';
 
 class ProfileEdit extends Component {
   state = {
@@ -57,62 +58,76 @@ class ProfileEdit extends Component {
   render() {
     const { name, email, description, image, loading, buttonDisable } = this.state;
     return (
-      <div data-testid="page-profile-edit">
+      <div data-testid="page-profile-edit" className="page-profile-edit">
         <Header />
         { loading ? <Loading /> : (
           <form>
-            <label htmlFor="input-name">
-              Nome:
-              <input
-                type="text"
-                name="name"
-                data-testid="edit-input-name"
-                value={ name }
-                onChange={ this.handleChange }
-              />
-            </label>
-            <label htmlFor="input-email">
-              Email:
-              <input
-                type="text"
-                name="email"
-                data-testid="edit-input-email"
-                value={ email }
-                onChange={ this.handleChange }
-              />
-            </label>
-            <label htmlFor="input-description">
-              Descrição:
-              <input
-                type="text"
-                name="description"
-                data-testid="edit-input-description"
-                value={ description }
-                onChange={ this.handleChange }
-              />
-            </label>
-            <img src={ image } alt={ name } />
-            <label htmlFor="input-image">
-              Image:
-              <input
-                id="input-image"
-                type="text"
-                name="image"
-                data-testid="edit-input-image"
-                value={ image }
-                onChange={ this.handleChange }
-              />
-            </label>
+            <div className="image-section-edit">
+              <img src="https://cdn-icons-png.flaticon.com/512/1544/1544829.png" alt="logo" className="logo-search" />
+              <img src={ image } alt={ name } className="image-edit-profile" />
+              <label htmlFor="input-image" className="label-image">
+                Image:
 
-            <button
-              type="submit"
-              data-testid="edit-button-save"
-              disabled={ buttonDisable }
-              onClick={ this.buttonSubmit }
-            >
-              Editar perfil
-            </button>
+                <input
+                  id="input-image"
+                  type="text"
+                  name="image"
+                  placeholder="Insira o link da imagem"
+                  className="input-image"
+                  data-testid="edit-input-image"
+                  value={ image }
+                  onChange={ this.handleChange }
+                />
+              </label>
+            </div>
+            <div className="edit-profile-info">
+              <label htmlFor="input-name" className="label-geral">
+                Nome:
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Fique à vontade para usar seu nome social"
+                  className="name-email-input"
+                  data-testid="edit-input-name"
+                  value={ name }
+                  onChange={ this.handleChange }
+                />
+              </label>
+              <label htmlFor="input-email" className="label-geral">
+                Email:
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Escolha um email que use diariamente"
+                  className="name-email-input"
+                  data-testid="edit-input-email"
+                  value={ email }
+                  onChange={ this.handleChange }
+                />
+              </label>
+              <label htmlFor="input-description" className="label-geral">
+                Descrição:
+                <input
+                  type="text"
+                  placeholder="Sobre mim"
+                  name="description"
+                  className="input-description"
+                  data-testid="edit-input-description"
+                  value={ description }
+                  onChange={ this.handleChange }
+                />
+              </label>
 
+              <button
+                type="submit"
+                className="button-edit-profile-page"
+                data-testid="edit-button-save"
+                disabled={ buttonDisable }
+                onClick={ this.buttonSubmit }
+              >
+                Editar Perfil
+              </button>
+            </div>
           </form>
         )}
       </div>
