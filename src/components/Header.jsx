@@ -39,7 +39,7 @@ class Header extends Component {
               to="/search"
               className="link"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="image-svg" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="image-svg" viewBox="0 0 16 16">
                 <path
                   d="M11.742 10.344a6.5 6.5 0 1 0-1.3971.398h-.001c.
                   03.04.062.078.098.115l3.853.85a1 1 0 0 0 1.415-1.4
